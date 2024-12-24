@@ -94,7 +94,7 @@ export const setPoints = async (id, points) => {
 };
 
 export const setTest = async (id, test) => {
-	id = id.toString();
+	id = id?.toString();
 	try {
 		const user = await prisma.user.update({
 			where: { vk_id: id },

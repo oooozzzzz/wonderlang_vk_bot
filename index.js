@@ -147,9 +147,7 @@ vk.updates.on("message_new", async (ctx) => {
 			);
 			break;
 		case "Получить ссылку":
-			// await updateDeal(userInfo.amoId, statuses.got_link.id, [
-			// 	{ field_id: customFields.test.id, values: [{ value: userInfo.test }] },
-			// ]);
+			await updateDeal(userInfo.amoId, statuses.got_link.id);
 			startTimer(ctx.senderId);
 			if (userInfo.test === "d1") {
 				await ctx.send(`Тест доступен по ссылке: https://forms.gle/d8DXravfwDohzy716
