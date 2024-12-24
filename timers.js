@@ -188,7 +188,7 @@ export async function updateTimer(userId) {
 	} else {
 		console.log(`Нет активного таймера для пользователя ${userId}.`);
 	} // Clear existing timer
-	if (userInfo.outdated) {
+	if (userInfo?.outdated) {
 		return;
 	}
 	const giftTimer = setTimeout(async () => {
