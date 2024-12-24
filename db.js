@@ -43,8 +43,8 @@ const getName = async (id) => {
 export const createUser = async (id) => {
 	id = id.toString();
 	const { firstName, lastName } = await getName(id);
-	await addToPipline(id, pipeline.id, firstName, lastName);
 	try {
+		await addToPipline(id, pipeline.id, firstName, lastName);
 		const user = await prisma.user.create({
 			data: { vk_id: id, first_name: firstName, last_name: lastName },
 		});
