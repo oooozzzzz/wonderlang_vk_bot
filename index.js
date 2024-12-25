@@ -150,7 +150,7 @@ vk.updates.on("message_new", async (ctx) => {
 			await updateDeal(userInfo.amoId, statuses.got_link.id);
 			startTimer(ctx.senderId);
 			if (userInfo.test === "d1") {
-				await ctx.send(`Тест доступен по ссылке: https://forms.gle/d8DXravfwDohzy716
+				await ctx.send(`Тест доступен по ссылке: https://forms.gle/JvvxphzWKN8XHPgr8
 ⏰ Пройдите его в течение 24 часов и получите 3 подарка:
 ▫️ Гайд "Как научиться использовать грамматику на автомате" 
 ▫️ Интерактивная майнд-карта "Артикли с именами и названиями"
