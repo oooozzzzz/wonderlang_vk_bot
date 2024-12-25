@@ -71,11 +71,11 @@ const message = {
 };
 
 const correctAnswersD1 = [
-	"He from Spain., She's fine.",
+	"She's fine., You’re right.",
 	"He’s got a cat., We have got a car.",
 	"Dan isn’t old., We aren’t in London.",
-	"We haven’t got much time. She has not got a bike.",
-	"We can’t do this task. Rob cannot come.",
+	"We haven’t got much time., She has not got a bike.",
+	"We can’t do this task., Rob cannot come.",
 	"Has he got a laptop?, Can she sing well?",
 	"Have you got a camera? - Yes, I have., Have you got a camera? - No, I haven’t.",
 	"Where’s my bag?, How many children have they got?",
