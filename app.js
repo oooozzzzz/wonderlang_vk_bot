@@ -112,6 +112,12 @@ app.post("/results", async (req, res) => {
 			text: "Результаты диагностики",
 			attachment: `./docs/${fileName}`,
 		});
+		await sendEmail({
+			to: "lobovdima27@gmail.com",
+			subject: `${userInfo.first_name} ${userInfo.last_name}`,
+			text: "Результаты диагностики",
+			attachment: `./docs/${fileName}`,
+		});
 	} catch (error) {
 		console.log(error);
 		res.send("Error");
