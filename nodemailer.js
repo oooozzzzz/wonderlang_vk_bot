@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import "dotenv/config";
-const user = process.env.USER || "loboff.dimitri@yandex.ru";
+const user = process.env.USERNAME || "loboff.dimitri@yandex.ru";
 const pass = process.env.PASS;
 const transporter = nodemailer.createTransport({
 	service: "yandex",
