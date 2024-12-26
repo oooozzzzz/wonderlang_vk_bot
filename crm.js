@@ -15,7 +15,9 @@ export const updateDeal = async (id, status_id, custom_fields_values) => {
 			custom_fields_values,
 		});
 	} catch (error) {
-		console.log(error.response.data["validation-errors"][0].errors);
+		try {
+			console.log(error.response?.data["validation-errors"][0].errors);
+		} catch (error) {}
 	}
 	// console.log(res.data["validation-errors"][0].errors);
 	// console.log(res.data);

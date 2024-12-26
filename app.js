@@ -48,7 +48,7 @@ app.post("/results", async (req, res) => {
 					fileName: `Результаты_диагностики_${d1.senderId}.docx`,
 				});
 				console.log(fileName);
-				await sendDocument(d1.senderId, fileName);
+
 				break;
 			case "d2":
 				const d2 = parseD2(req.body);
@@ -63,7 +63,7 @@ app.post("/results", async (req, res) => {
 					points: d2.points,
 					fileName: `Результаты_диагностики_${d2.senderId}`,
 				});
-				await sendDocument(d2.senderId, fileName);
+
 				break;
 			case "d2IELTS":
 				const d3 = parseD3(req.body);
@@ -77,7 +77,7 @@ app.post("/results", async (req, res) => {
 					points: d3.points,
 					fileName: `Результаты_диагностики_${d3.senderId}`,
 				});
-				// await sendDocument(d3.senderId, fileName);
+
 				console.log(d3.points);
 				break;
 			default:
