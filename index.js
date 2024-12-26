@@ -62,6 +62,7 @@ vk.updates.on("message_new", async (ctx) => {
 			await createUser(ctx.senderId);
 			await ctx.send(
 				`Пожалуйста, ответьте на пару вопросов, чтобы я подобрала для вас подходящий тест`,
+				{ keyboard: builder([{ label: "К вопросам" }]) },
 			);
 			break;
 		case "К вопросам":
