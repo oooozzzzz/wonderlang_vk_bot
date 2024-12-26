@@ -22,6 +22,8 @@ const transporter = nodemailer.createTransport({
 // console.log("Сообщение отправлено " + info.accepted[0]);
 
 export const sendEmail = async ({ to, subject, text, attachment }) => {
+	console.log(user);
+	console.log(pass);
 	try {
 		const info = await transporter.sendMail({
 			from: `WonderLang <${user}>`,
