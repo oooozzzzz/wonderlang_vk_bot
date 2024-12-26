@@ -615,7 +615,7 @@ export const createD2File = async ({ results, name, points, fileName }) => {
 					header,
 					addName(name),
 					date(),
-					addPoints(points),
+					addPoints(points, 50),
 					descriptionVocab(),
 					tableVoc(rowsVoc),
 					new Paragraph({

@@ -30,7 +30,7 @@ export const sendMessage = async (peer_id, message, keyboard) => {
 	});
 };
 
-export const sendDocument = async (userId, fileName) => {
+export const sendDocument = async ({ userId, message, fileName, keyboard }) => {
 	const attachment = await upload.messageDocument({
 		source: {
 			value: `./docs/${fileName}`,
@@ -44,9 +44,7 @@ export const sendDocument = async (userId, fileName) => {
 		user_id: userId,
 		random_id: 0,
 		attachment,
-		message: `Результаты диагностического теста готовы!
-Обещанные подарки отправим вам в течение двух часов.
-А пока получите обратную связь👇`,
-		keyboard: builder([{ label: "Получить обратную связь" }]).oneTime(true),
+		message,
+		keyboard,
 	});
 };

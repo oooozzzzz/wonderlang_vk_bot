@@ -545,7 +545,7 @@ export const date = () => {
 	});
 };
 
-export const addPoints = (number) => {
+export const addPoints = (number, outOf = 60) => {
 	return new Paragraph({
 		children: [
 			new TextRun({
@@ -554,7 +554,7 @@ export const addPoints = (number) => {
 				bold: true,
 			}),
 			new TextRun({
-				text: `${number}/60`,
+				text: `${number}/${outOf}`,
 				size: 25,
 			}),
 		],

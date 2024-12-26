@@ -1,9 +1,16 @@
 import { getUserInfo } from "./db.js";
 import { builder } from "./keyboards.js";
 import { delay } from "./services.js";
+import { sendDocument } from "./upload.js";
 
 export const handleOS = async (ctx) => {
 	const userInfo = await getUserInfo(ctx.senderId);
+	await sendDocument({
+		userId: ctx.senderId,
+		fileName: `Результаты_диагностики_${ctx.senderId}.docx`,
+		message: `Результаты диагностики`,
+	});
+	await delay(1000);
 	if (userInfo.test === "d1") {
 		if (userInfo.points <= 45) {
 			await ctx.send(
@@ -12,7 +19,7 @@ export const handleOS = async (ctx) => {
 Каких именно? Показываю в файле☝️
 
 Хотите, угадаю, о чем вы сейчас подумали?)`,
-				{ keyboard: builder([{ label: "Немного телепатии))" }]).oneTime(true) },
+				{ keyboard: builder([{ label: "Немного телепатии))" }]) },
 			);
 		} else {
 			await ctx.send(`У Вас уже есть хороший грамматический фундамент, но остаются точечные пробелы в знании нескольких важных тем.
@@ -37,7 +44,7 @@ export const handleOS = async (ctx) => {
 https://vk.com/im?sel=-213318868
 А теперь – к рекомендациям`,
 				{
-					keyboard: builder([{ label: "Получить рекомендации" }]).oneTime(true),
+					keyboard: builder([{ label: "Получить рекомендации" }]),
 				},
 			);
 		} else if (points > 17 && points <= 19) {
@@ -48,7 +55,7 @@ https://vk.com/im?sel=-213318868
 https://vk.com/im?sel=-213318868
 А теперь – к рекомендациям`,
 				{
-					keyboard: builder([{ label: "Получить рекомендации" }]).oneTime(true),
+					keyboard: builder([{ label: "Получить рекомендации" }]),
 				},
 			);
 		} else if (points >= 20 && points < 26) {
@@ -59,7 +66,7 @@ https://vk.com/im?sel=-213318868
 https://vk.com/im?sel=-213318868
 Хотите узнать, сколько времени вам потребуется, чтобы достичь уровня B2?`,
 				{
-					keyboard: builder([{ label: "Рассчитать время" }]).oneTime(true),
+					keyboard: builder([{ label: "Рассчитать время" }]),
 				},
 			);
 		} else if (points >= 26 && points < 30) {
@@ -70,7 +77,7 @@ https://vk.com/im?sel=-213318868
 https://vk.com/im?sel=-213318868
 Хотите узнать, сколько времени вам потребуется, чтобы достичь уровня B2?`,
 				{
-					keyboard: builder([{ label: "Рассчитать время" }]).oneTime(true),
+					keyboard: builder([{ label: "Рассчитать время" }]),
 				},
 			);
 		} else if (points >= 30 && points < 36) {
@@ -82,7 +89,7 @@ https://vk.com/im?sel=-213318868
 https://vk.com/im?sel=-213318868
 Хотите узнать, сколько времени вам потребуется, чтобы достичь уровня C1?`,
 				{
-					keyboard: builder([{ label: "Рассчитать время" }]).oneTime(true),
+					keyboard: builder([{ label: "Рассчитать время" }]),
 				},
 			);
 		} else if (points >= 36 && points < 40) {
@@ -94,7 +101,7 @@ https://vk.com/im?sel=-213318868
 https://vk.com/im?sel=-213318868
 Хотите узнать, сколько времени вам потребуется, чтобы достичь уровня C1?👇`,
 				{
-					keyboard: builder([{ label: "Рассчитать время" }]).oneTime(true),
+					keyboard: builder([{ label: "Рассчитать время" }]),
 				},
 			);
 		} else if (points >= 40 && points < 46) {
@@ -106,7 +113,7 @@ https://vk.com/im?sel=-213318868
 https://vk.com/im?sel=-213318868
 Хотите узнать, сколько времени вам потребуется, чтобы достичь уровня C2?👇`,
 				{
-					keyboard: builder([{ label: "Рассчитать время" }]).oneTime(true),
+					keyboard: builder([{ label: "Рассчитать время" }]),
 				},
 			);
 		} else if (points >= 46) {
@@ -119,7 +126,7 @@ https://vk.com/im?sel=-213318868
 Теперь – к рекомендациям👇
 `,
 				{
-					keyboard: builder([{ label: "Что дальше?" }]).oneTime(true),
+					keyboard: builder([{ label: "Что дальше?" }]),
 				},
 			);
 		}

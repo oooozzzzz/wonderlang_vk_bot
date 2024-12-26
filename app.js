@@ -11,6 +11,7 @@ import { updateDeal } from "./crm.js";
 import { customFields, statuses } from "./config.js";
 import { sendEmail } from "./nodemailer.js";
 import "dotenv/config";
+import { builder } from "./keyboards.js";
 export const app = express();
 app.use(bodyParser.json());
 app.post("/json", async (req, res) => {
@@ -76,12 +77,19 @@ app.post("/results", async (req, res) => {
 					points: d3.points,
 					fileName: `Результаты_диагностики_${d3.senderId}`,
 				});
-				await sendDocument(d3.senderId, fileName);
+				// await sendDocument(d3.senderId, fileName);
 				console.log(d3.points);
 				break;
 			default:
 				break;
 		}
+		await sendMessage(
+			userId,
+			`Результаты диагностического теста готовы!
+Обещанные подарки отправим вам в течение двух часов.
+А пока получите обратную связь👇`,
+			builder([{ label: "Получить обратную связь" }]),
+		);
 		await setTest(userId, test);
 
 		clearTimer(userId);

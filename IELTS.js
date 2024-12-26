@@ -631,7 +631,7 @@ export const createIELTSFile = async ({ results, name, points, fileName }) => {
 					header,
 					addName(name),
 					date(),
-					addPoints(points),
+					addPoints(points, 50),
 					addH2("ЛЕКСИКА"),
 					descriptionVocab(),
 					tableVoc(rowsVoc),
