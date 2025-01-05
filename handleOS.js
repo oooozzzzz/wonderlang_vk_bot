@@ -1,6 +1,6 @@
 import { getUserInfo } from "./db.js";
 import { builder } from "./keyboards.js";
-import { delay } from "./services.js";
+import { delay, IELTSPoints } from "./services.js";
 import { sendDocument } from "./upload.js";
 
 export const handleOS = async (ctx) => {
@@ -132,7 +132,7 @@ https://vk.com/im?sel=-213318868
 		}
 	} else if (userInfo.test === "d2IELTS") {
 		await ctx.send(
-			`Ваш уровень: [см. второй столбец таблицы https://docs.google.com/document/d/1zFMyZJr5iZmmwTjx7wah_JpRFQjdfeiiMf9tmgZPZxE/edit?tab=t.0]
+			`Ваш уровень: ${IELTSPoints(userInfo.points).level}
 
 Подробную информацию о ваших ошибках и соответствующих темах собрали для вас в файле☝️
 

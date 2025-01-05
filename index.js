@@ -2,7 +2,7 @@ import { Keyboard } from "vk-io";
 import { users, vk } from "./bot.js";
 import { builder } from "./keyboards.js";
 import { aboutYou, createUser, getUserInfo, setPoints, setTest } from "./db.js";
-import { delay } from "./services.js";
+import { delay, IELTSPoints } from "./services.js";
 import { app } from "./app.js";
 import { configDotenv } from "dotenv";
 import { handleOS } from "./handleOS.js";
@@ -19,6 +19,7 @@ import { getPromocode } from "./sheets.js";
 import moment from "moment";
 import { updateDeal } from "./crm.js";
 import { customFields, statuses } from "./config.js";
+import { sendPhoto } from "./upload.js";
 configDotenv();
 const port = process.env.PORT || 3000;
 // const builder = Keyboard.builder()
@@ -601,7 +602,9 @@ IELTS Strategy проводит Мария Дятлова:
 			break;
 		case "Сколько это баллов?":
 			await ctx.send(
-				`Ваш приблизительный балл на IELTS: [см. третий столбец таблицы]
+				`Ваш приблизительный балл на IELTS: ${
+					IELTSPoints(userInfo.points).result
+				}
 
 ❓А поточнее?
 ❓Сколько времени потребуется, чтобы подготовиться к экзамену на нужный балл?
@@ -633,9 +636,12 @@ IELTS Strategy проводит Мария Дятлова:
 			);
 			break;
 		default:
-			await ctx.send(
-				`Я понимаю только кнопки, поэтому, пожалуйста, используйте их для общения со мной.`,
-			);
+			await sendPhoto({
+				userId: ctx.senderId,
+				message: `Я понимаю только кнопки, поэтому, пожалуйста, используйте их для общения со мной.
+Если кнопка пропала, нажмите на этот значок, и она вернется👇`,
+				fileName: "image.png",
+			});
 			break;
 	}
 });

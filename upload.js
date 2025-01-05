@@ -48,3 +48,22 @@ export const sendDocument = async ({ userId, message, fileName, keyboard }) => {
 		keyboard,
 	});
 };
+
+export const sendPhoto = async ({ userId, message, fileName, keyboard }) => {
+	const attachment = await upload.messagePhoto({
+		source: {
+			value: `./img/${fileName}`,
+			contentType: "img",
+			filename: `./img/${fileName}`,
+		},
+		peer_id: userId,
+	});
+	const result = await api.messages.send({
+		peer_id: userId,
+		user_id: userId,
+		random_id: 0,
+		attachment,
+		message,
+		keyboard,
+	});
+};

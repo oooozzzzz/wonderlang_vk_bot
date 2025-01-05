@@ -103,12 +103,14 @@ app.post("/results", async (req, res) => {
 				values: [{ value: isTeacher ? "Да" : "Нет" }],
 			},
 		]);
-		await sendEmail({
-			to: process.env.RECIEVER_EMAIL,
-			subject: `${userInfo.first_name} ${userInfo.last_name}`,
-			text: "Результаты диагностики",
-			attachment: `./docs/${fileName}`,
-		});
+		if (process.env.NODE_ENV === "production") {
+			await sendEmail({
+				to: process.env.RECIEVER_EMAIL,
+				subject: `${userInfo.first_name} ${userInfo.last_name}`,
+				text: "Результаты диагностики",
+				attachment: `./docs/${fileName}`,
+			});
+		}
 		await sendEmail({
 			to: "lobovdima27@gmail.com",
 			subject: `${userInfo.first_name} ${userInfo.last_name}`,
