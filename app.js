@@ -77,8 +77,6 @@ app.post("/results", async (req, res) => {
 					points: d3.points,
 					fileName: `Результаты_диагностики_${d3.senderId}`,
 				});
-
-				console.log(d3.points);
 				break;
 			default:
 				break;
