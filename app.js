@@ -93,7 +93,6 @@ app.post("/results", async (req, res) => {
 		await setTest(userId, test);
 
 		clearTimer(userId);
-		res.send("Success");
 		const userInfo = await getUserInfo(userId);
 		await updateDeal(userInfo.amoId, statuses.got_feedback.id, [
 			{ field_id: customFields.email.id, values: [{ value: email }] },
@@ -118,6 +117,7 @@ app.post("/results", async (req, res) => {
 			text: "Результаты диагностики",
 			attachment: `./docs/${fileName}`,
 		});
+		res.send("Success");
 	} catch (error) {
 		console.log(error);
 		res.send("Error");
