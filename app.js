@@ -4,7 +4,7 @@ import { parseD1, parseD2, parseD3 } from "./answersHandler.js";
 import { addPoints, createD1File } from "./D1.js";
 import { createD2File } from "./D2.js";
 import { sendDocument, sendMessage } from "./upload.js";
-import { getUserInfo, setPoints, setTest } from "./db.js";
+import { getUserInfo, setPoints, setTeacher, setTest } from "./db.js";
 import { clearTimer } from "./timers.js";
 import { createIELTSFile } from "./IELTS.js";
 import { updateDeal } from "./crm.js";
@@ -89,7 +89,7 @@ app.post("/results", async (req, res) => {
 			builder([{ label: "Получить обратную связь" }]),
 		);
 		await setTest(userId, test);
-
+		await setTeacher(userId, isTeacher);
 		clearTimer(userId);
 		const userInfo = await getUserInfo(userId);
 		await updateDeal(userInfo.amoId, statuses.got_feedback.id, [

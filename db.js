@@ -118,3 +118,16 @@ export const setOutdated = async (id) => {
 		console.log(error.message);
 	}
 };
+
+export const setTeacher = async (id, isTeacher) => {
+	id = id.toString();
+	try {
+		const user = await prisma.user.update({
+			where: { vk_id: id },
+			data: { isTeacher },
+		});
+		return true;
+	} catch (error) {
+		console.log(error.message);
+	}
+};
