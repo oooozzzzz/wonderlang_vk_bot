@@ -115,6 +115,9 @@ const sendGifts = async (userId) => {
 	let text1;
 	let text2;
 	const userInfo = await getUserInfo(userId);
+	if (userInfo?.outdated) {
+		return;
+	}
 	switch (userInfo.test) {
 		case "d1":
 			text1 = `А вот и ваши подарки!
