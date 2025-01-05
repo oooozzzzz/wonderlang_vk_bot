@@ -94,7 +94,7 @@ vk.updates.on("message_new", async (ctx) => {
 			break;
 		case "Скорее да":
 			await setTest(ctx.senderId, "d1");
-			await updateDeal(userInfo.amoId, undefined, [
+			await updateDeal(userInfo?.amoId, undefined, [
 				{ field_id: customFields.gaps.id, values: [{ value: "Да" }] },
 			]);
 			await ctx.send(
@@ -108,7 +108,7 @@ vk.updates.on("message_new", async (ctx) => {
 			);
 			break;
 		case "Нет":
-			await updateDeal(userInfo.amoId, undefined, [
+			await updateDeal(userInfo?.amoId, undefined, [
 				{ field_id: customFields.gaps.id, values: [{ value: "Нет" }] },
 			]);
 			await setTest(ctx.senderId, "d2");
@@ -142,7 +142,7 @@ vk.updates.on("message_new", async (ctx) => {
 			);
 			break;
 		case "Получить ссылку":
-			await updateDeal(userInfo.amoId, statuses.got_link.id);
+			await updateDeal(userInfo?.amoId, statuses.got_link.id);
 			startTimer(ctx.senderId);
 			if (userInfo.test === "d1") {
 				await ctx.send(`Тест доступен по ссылке: https://forms.gle/JvvxphzWKN8XHPgr8
@@ -382,7 +382,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 			);
 			break;
 		case "Сдать IELTS":
-			await updateDeal(userInfo.amoId, undefined, [
+			await updateDeal(userInfo?.amoId, undefined, [
 				{
 					field_id: customFields.purpose.id,
 					values: [{ value: "Сдать IELTS" }],
@@ -501,7 +501,7 @@ IELTS Strategy проводит Мария Дятлова:
 			}
 			break;
 		case "Получить промокод":
-			await updateDeal(userInfo.amoId, statuses.got_promocode.id);
+			await updateDeal(userInfo?.amoId, statuses.got_promocode.id);
 			await ctx.send(await getPromocode(moment().format("DD")));
 			await delay(1500);
 			await ctx.send(
