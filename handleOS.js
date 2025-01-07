@@ -1,10 +1,12 @@
 import { getUserInfo } from "./db.js";
 import { builder } from "./keyboards.js";
 import { delay, IELTSPoints } from "./services.js";
+import { updateTimer } from "./timers.js";
 import { sendDocument } from "./upload.js";
 
 export const handleOS = async (ctx) => {
 	const userInfo = await getUserInfo(ctx.senderId);
+	await updateTimer(ctx.senderId);
 	await sendDocument({
 		userId: ctx.senderId,
 		fileName: `Результаты_диагностики_${ctx.senderId}.docx`,

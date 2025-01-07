@@ -57,7 +57,6 @@ const port = process.env.PORT || 3000;
 
 vk.updates.on("message_new", async (ctx) => {
 	const userInfo = await getUserInfo(ctx.senderId);
-	await updateTimer(ctx.senderId);
 	switch (ctx.text) {
 		case "Начать":
 			await createUser(ctx.senderId);
@@ -138,7 +137,7 @@ vk.updates.on("message_new", async (ctx) => {
 				`Теперь можно приступать к диагностике.
 Получите ссылку на тест👇
 `,
-				{ keyboard: builder([{ label: "Получить ссылку" }]) },
+				{ keyboard: builder([{ label: "Получить ссылку" }]).oneTime(true) },
 			);
 			break;
 		case "Получить ссылку":
@@ -293,7 +292,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 
 Готовы? Тогда нажмите на кнопку👇`,
 				{
-					keyboard: builder([{ label: "Получить промокод" }]),
+					keyboard: builder([{ label: "Получить промокод" }]).oneTime(true),
 				},
 			);
 			break;
@@ -612,7 +611,7 @@ IELTS Strategy проводит Мария Дятлова:
 В чем преимущества такого формата для вас как English teacher и English learner?
 
 Рассказываю👇`,
-				{ keyboard: builder([{ label: "В чем преимущества?" }]) },
+				{ keyboard: builder([{ label: "В чем преимущества?" }]).oneTime(true) },
 			);
 			break;
 		case "В чем преимущества?":
