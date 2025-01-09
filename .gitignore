@@ -3,3 +3,4 @@ node_modules
 .env
 amo_token.txt
 credentials.json
+prisma/dev.db

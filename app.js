@@ -27,6 +27,7 @@ app.post("/message", async (req, res) => {
 	}
 });
 app.post("/results", async (req, res) => {
+	console.log("got results");
 	let userId;
 	let points;
 	let email;
