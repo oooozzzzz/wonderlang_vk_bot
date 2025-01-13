@@ -325,7 +325,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 			);
 			break;
 		case "Хочу закрыть пробелы":
-			await ctx.send(`Тогда предлагаю вам пройти один из модулей курса "Tense Matters".
+			await ctx.send(`Предлагаю вам пройти один из модулей курса "Tense Matters".
 
 
 
@@ -498,7 +498,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 
 1️⃣ диагностический тест в формате IELTS 
 
-2️⃣ подробная связь преподавателя по эссе  (Writing Part 2) и монологу (Speaking Part 2)
+2️⃣ подробная обратная связь преподавателя по эссе  (Writing Part 2) и монологу (Speaking Part 2)
 
 3️⃣ индивидуальная стратегическая сессия с преподавателем (30 минут) + урок по IELTS Speaking или Writing (30 минут)
 
