@@ -4,7 +4,7 @@ import { parseD1, parseD2, parseD3 } from "./answersHandler.js";
 import { addPoints, createD1File } from "./D1.js";
 import { createD2File } from "./D2.js";
 import { sendDocument, sendMessage } from "./upload.js";
-import { getUserInfo, setPoints, setTeacher, setTest } from "./db.js";
+import { getUserInfo, setEmail, setPoints, setTeacher, setTest } from "./db.js";
 import { clearTimer } from "./timers.js";
 import { createIELTSFile } from "./IELTS.js";
 import { updateDeal } from "./crm.js";
@@ -46,7 +46,7 @@ app.post("/results", async (req, res) => {
 					results: d1.results,
 					name: d1.name,
 					points: d1.points,
-					fileName: `Результаты_диагностики_${d1.senderId}.docx`,
+					fileName: `Результаты_диагностики_${email}.docx`,
 				});
 				console.log(fileName);
 
@@ -62,7 +62,7 @@ app.post("/results", async (req, res) => {
 					results: d2.results,
 					name: d2.name,
 					points: d2.points,
-					fileName: `Результаты_диагностики_${d2.senderId}`,
+					fileName: `Результаты_диагностики_${email}`,
 				});
 
 				break;
@@ -76,29 +76,31 @@ app.post("/results", async (req, res) => {
 					results: d3.results,
 					name: d3.name,
 					points: d3.points,
-					fileName: `Результаты_диагностики_${d3.senderId}`,
+					fileName: `Результаты_диагностики_${email}`,
 				});
 				break;
 			default:
 				break;
 		}
+
+		const userInfo = await getUserInfo(userId);
 		if (process.env.NODE_ENV === "production") {
 			await sendEmail({
 				to: process.env.RECIEVER_EMAIL,
-				subject: `${userInfo.first_name} ${userInfo.last_name}`,
-				text: "Результаты диагностики",
-				attachment: `./docs/${fileName}`,
-			});
-			await sendEmail({
-				to: email,
-				subject: `${userInfo.first_name} ${userInfo.last_name}`,
+				subject: `Диагностика для ${email}`,
 				text: "Результаты диагностики",
 				attachment: `./docs/${fileName}`,
 			});
 		}
 		await sendEmail({
+			to: email,
+			subject: `Диагностика для ${email}`,
+			text: "Результаты диагностики",
+			attachment: `./docs/${fileName}`,
+		});
+		await sendEmail({
 			to: "lobovdima27@gmail.com",
-			subject: `${userInfo.first_name} ${userInfo.last_name}`,
+			subject: `Диагностика для ${email}`,
 			text: "Результаты диагностики",
 			attachment: `./docs/${fileName}`,
 		});
@@ -113,10 +115,11 @@ app.post("/results", async (req, res) => {
 А пока получите обратную связь👇`,
 			builder([{ label: "Получить обратную связь" }]).oneTime(true),
 		);
+		await setEmail(userId, email);
 		await setTest(userId, test);
 		await setTeacher(userId, isTeacher);
 		clearTimer(userId);
-		const userInfo = await getUserInfo(userId);
+
 		await updateDeal(userInfo.amoId, statuses.got_feedback.id, [
 			{ field_id: customFields.email.id, values: [{ value: email }] },
 			{
@@ -128,6 +131,7 @@ app.post("/results", async (req, res) => {
 				values: [{ value: isTeacher ? "Да" : "Нет" }],
 			},
 		]);
+		res.send("Success");
 	} catch (error) {
 		console.log(error);
 		res.send("Error");

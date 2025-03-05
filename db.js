@@ -131,3 +131,16 @@ export const setTeacher = async (id, isTeacher) => {
 		console.log(error.message);
 	}
 };
+
+export const setEmail = async (id, email) => {
+	id = id.toString();
+	try {
+		const user = await prisma.user.update({
+			where: { vk_id: id },
+			data: { email },
+		});
+		return true;
+	} catch (error) {
+		console.log(error.message);
+	}
+};

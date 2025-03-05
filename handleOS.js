@@ -9,7 +9,7 @@ export const handleOS = async (ctx) => {
 	await updateTimer(ctx.senderId);
 	await sendDocument({
 		userId: ctx.senderId,
-		fileName: `Результаты_диагностики_${ctx.senderId}.docx`,
+		fileName: `Результаты_диагностики_${userInfo.email}.docx`,
 		message: `Результаты диагностики`,
 	});
 	await delay(1000);
