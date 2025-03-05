@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import "dotenv/config";
-const user = process.env.LOGIN || "loboff.dimitri@yandex.ru";
+const user = process.env.LOGIN || "tatiana.shustilova@yandex.ru";
 const pass = process.env.PASS;
 const transporter = nodemailer.createTransport({
 	service: "yandex",
@@ -28,7 +28,7 @@ export const sendEmail = async ({ to, subject, text, attachment }) => {
 			to,
 			subject,
 			text,
-			attachments: [{ path: attachment }],
+			attachments: attachment ? [{ path: attachment }] : null,
 		});
 		console.log("Сообщение отправлено " + info.accepted[0]);
 	} catch (error) {

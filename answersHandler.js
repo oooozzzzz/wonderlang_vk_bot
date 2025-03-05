@@ -275,6 +275,14 @@ export const parseD2 = (message) => {
 
 	return { senderId, results, points, name, email, isTeacher };
 };
+/**
+ * Parses the message object to extract sender information and results for a D3 test.
+ *
+ * @param {Object} message - The message object containing test data.
+ * @returns {Object} An object containing senderId, results (comparison of answers),
+ *                   points, name, and email extracted from the message.
+ */
+
 export const parseD3 = (message) => {
 	const data = message.values[0];
 	const email = data[1].toString();

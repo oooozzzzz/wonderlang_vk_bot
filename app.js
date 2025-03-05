@@ -82,6 +82,30 @@ app.post("/results", async (req, res) => {
 			default:
 				break;
 		}
+		if (process.env.NODE_ENV === "production") {
+			await sendEmail({
+				to: process.env.RECIEVER_EMAIL,
+				subject: `${userInfo.first_name} ${userInfo.last_name}`,
+				text: "Результаты диагностики",
+				attachment: `./docs/${fileName}`,
+			});
+			await sendEmail({
+				to: email,
+				subject: `${userInfo.first_name} ${userInfo.last_name}`,
+				text: "Результаты диагностики",
+				attachment: `./docs/${fileName}`,
+			});
+		}
+		await sendEmail({
+			to: "lobovdima27@gmail.com",
+			subject: `${userInfo.first_name} ${userInfo.last_name}`,
+			text: "Результаты диагностики",
+			attachment: `./docs/${fileName}`,
+		});
+		if (!/^\d{9}$/.test(userId)) {
+			res.send("Success");
+			return;
+		}
 		await sendMessage(
 			userId,
 			`Результаты диагностического теста готовы!
@@ -104,21 +128,6 @@ app.post("/results", async (req, res) => {
 				values: [{ value: isTeacher ? "Да" : "Нет" }],
 			},
 		]);
-		if (process.env.NODE_ENV === "production") {
-			await sendEmail({
-				to: process.env.RECIEVER_EMAIL,
-				subject: `${userInfo.first_name} ${userInfo.last_name}`,
-				text: "Результаты диагностики",
-				attachment: `./docs/${fileName}`,
-			});
-		}
-		await sendEmail({
-			to: "lobovdima27@gmail.com",
-			subject: `${userInfo.first_name} ${userInfo.last_name}`,
-			text: "Результаты диагностики",
-			attachment: `./docs/${fileName}`,
-		});
-		res.send("Success");
 	} catch (error) {
 		console.log(error);
 		res.send("Error");
