@@ -270,7 +270,9 @@ export const parseD2 = (message) => {
 	const senderId = data[3].toString();
 	const name = data[4].toString();
 	const answers = data.slice(5, 55);
-	const isTeacher = data[55].toLowerCase().includes("преподавание английского");
+	const isTeacher = data[55]
+		?.toLowerCase()
+		?.includes("преподавание английского");
 	const results = compareArrays(correctAnswersD2, answers);
 
 	return { senderId, results, points, name, email, isTeacher };
