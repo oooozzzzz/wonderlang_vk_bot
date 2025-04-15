@@ -175,7 +175,7 @@ const correctAnswersD2 = [
 	"hit rock bottom",
 	"strike",
 	"I spent hours on this task., I spent hours walking around the town.",
-	"I offered them something to eat, but they weren't hungry, They had just had lunch., I offered them something to eat, but they weren't hungry. So, we all went for a walk.",
+	"I offered them something to eat, but they weren't hungry. They had just had lunch., I offered them something to eat, but they weren't hungry. So, we all went for a walk.",
 	"I've been trying to get in touch with her for about an hour. Do you know where she is?, We've been in London for about a week now, but we haven't visited the British Museum yet.",
 	"If Tommy does not get better tonight, Mary will call the doctor., Mary will call the doctor if Tommy doesn't get better tonight.",
 	"If I could visit any country in the world this summer, I would go to Italy., If I could visit any country in the world, I'd go to Italy.",
