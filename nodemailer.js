@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
 export const sendEmail = async ({ to, subject, text, attachment }) => {
 	try {
 		const info = await transporter.sendMail({
-			from: `WonderLang <${user}>`,
+			from: `NativeLike <${user}>`,
 			to,
 			subject,
 			text,
