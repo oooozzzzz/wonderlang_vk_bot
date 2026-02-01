@@ -432,7 +432,7 @@ const descriptionVocab = () => {
 						size: 25,
 					}),
 				],
-				link: "https://wonderlang-school.com/nativelike/",
+				link: "https://nativelike.school/nativelike-level-up",
 			}),
 			new TextRun({
 				text: ", где прорабатываются соответствующие слова/выражения, + лексические темы, которым посвящены эти модули.",
@@ -460,7 +460,7 @@ const descriptionGram = () => {
 						size: 25,
 					}),
 				],
-				link: "https://wonderlang-school.com/nativelike/",
+				link: "https://nativelike.school/nativelike-level-up",
 			}),
 			new TextRun({
 				text: ", где прорабатываются эти темы.",

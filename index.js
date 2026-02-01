@@ -297,7 +297,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 
 ✅ можете с чистой совестью переходить к более сложным темам и больше никогда не тратить время на азы.
 
-Подробная информация о курсе: https://wonderlang-school.com/tense-matters/
+Подробная информация о курсе: https://nativelike.school/tense-matters
 
 По любым вопросам пишите сюда: https://vk.com/im?sel=-213318868`,
 			);
@@ -329,7 +329,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 
 
 
-Подробная информация о курсе: https://wonderlang-school.com/tense-matters/
+Подробная информация о курсе: https://nativelike.school/tense-matters
 
 По любым вопросам пишите сюда: https://vk.com/im?sel=-213318868`);
 			await delay(1500);
@@ -429,7 +429,7 @@ https://forms.gle/CrLxDyM5NabgCjeX8
 
 ✅ можете с чистой совестью переходить к более сложным темам и больше никогда не тратить время на азы.
 
-Подробная информация о курсе: https://wonderlang-school.com/tense-matters/
+Подробная информация о курсе: https://nativelike.school/tense-matters
 
 По любым вопросам пишите сюда: https://vk.com/im?sel=-213318868`,
 			);

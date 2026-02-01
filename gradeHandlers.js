@@ -188,7 +188,7 @@ export const myselfHandler = async (ctx) => {
 		await delay(25000);
 		await ctx.send(`Каких результатов они достигли за 2-4 месяца обучения?
 
-Кейсы Елизаветы, Влады, Марии и нескольких других выпускниц "NativeLike" вы найдете на странице курса: https://wonderlang-school.com/nativelike`);
+Кейсы Елизаветы, Влады, Марии и нескольких других выпускниц "NativeLike" вы найдете на странице курса: https://nativelike.school/nativelike-level-up`);
 		await delay(1500);
 		await ctx.send(
 			`Вы хотите овладеть методом "NativeLike" и начать быстро повышать свой уровень самостоятельно?

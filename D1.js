@@ -579,7 +579,7 @@ const description = () => {
 						size: 25,
 					}),
 				],
-				link: "https://wonderlang-school.com/tense-matters/",
+				link: "https://nativelike.school/tense-matters",
 			}),
 			new TextRun({
 				text: ", где вы можете изучить эти правила и автоматизировать их использование.",
